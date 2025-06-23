@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Accueil - Artiste Graveur</title>
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+      <h1 class="logo">THIERRY GAVARD</h1>
+      <ul class="nav-links">
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="about.html">À propos</a></li>
+        <li><a href="gallery.html">Galerie</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h2>Linogravures, Estampes, créations originales</h2>
+      <p>Estampes, linogravures, et créations originales.</p>
+    </section>
+
+    <section class="highlight">
+      <h3>Œuvre en avant</h3>
+      <section class="carousel">
+  <div class="carousel-track-container">
+    <ul class="carousel-track">
+      <li class="carousel-slide current-slide">
+        <img src="assets\css\img\image1RizGeisha.png" alt="Oeuvre 1" />
+      </li>
+      <li class="carousel-slide">
+        <img src="assets\css\img\geisha.png" alt="Oeuvre 2" />
+      </li>
+      <li class="carousel-slide">
+        <img src="assets\css\img\ganesh.jpg" alt="Oeuvre 3" />
+      </li>
+      <li class="carousel-slide">
+        <img src="assets\css\img\bouddha.jpg" alt="Oeuvre 4" />
+      </li>
+    </ul>
+  </div>
+
+  <button class="carousel-button carousel-button-left">&#10094;</button>
+  <button class="carousel-button carousel-button-right">&#10095;</button>
+</section>
+
+      <p>Description de l’œuvre en avant.</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Thierry Gavard. Tous droits réservés.</p>
+  </footer>
+  <script>
+  const track = document.querySelector('.carousel-track');
+  const slides = Array.from(track.children);
+  const nextButton = document.querySelector('.carousel-button-right');
+  const prevButton = document.querySelector('.carousel-button-left');
+
+  let currentSlideIndex = 0;
+
+  function updateSlidePosition() {
+    const slideWidth = slides[0].getBoundingClientRect().width;
+    track.style.transform = `translateX(-${currentSlideIndex * slideWidth}px)`;
+  }
+
+  nextButton.addEventListener('click', () => {
+    currentSlideIndex = (currentSlideIndex + 1) % slides.length;
+    updateSlidePosition();
+  });
+
+  prevButton.addEventListener('click', () => {
+    currentSlideIndex = (currentSlideIndex - 1 + slides.length) % slides.length;
+    updateSlidePosition();
+  });
+
+  window.addEventListener('resize', updateSlidePosition);
+</script>
+
+</body>
+</html>
